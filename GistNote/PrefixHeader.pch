@@ -1,0 +1,39 @@
+//
+//  PrefixHeader.pch
+//  GistNotes
+//
+//  Created on 26/02/15.
+//  Copyright (c) 2015  . All rights reserved.
+//
+
+#ifndef GistNotes_PrefixHeader_pch
+#define GistNotes_PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "HMEnums.h"
+#import "HMStrings.h"
+#import "HMMethods.h"
+#import "HMDimentions.h"
+#import "HMErrors.h"
+#import "HMExceptions.h"
+
+#import "NSObject+HMBase.h"
+
+#import "HMStorageAPI.h"
+#import "HMServerAPI.h"
+
+// exception
+#define FUNCT_EXC(errorCode, logLevel, moduleID, msgID) [self errorHandlingWithCode:errorCode withLogLevel:logLevel inModule:moduleID withMessageID:msgID methodData:[NSString stringWithFormat:@"<%@:%d> %s", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __func__]];
+
+// exception
+#define FUNCT_EXC_SERV(errorCode, logLevel, moduleID, msg) [self errorHandlingWithCode:errorCode withLogLevel:logLevel inModule:moduleID withMessage:msg methodData:[NSString stringWithFormat:@"<%@:%d> %s", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __func__]];
+
+
+
+#endif

@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  GistNotes
+
+  Created on 26/02/15.
+  Copyright (c) 2015  . All rights reserved.
+*/
+
+"APP_NAME" = "GistNote";
+
+"SERVER_ERROR" = "Server Error";
+
+"MSG_UIElementWasNotFound"      = "UI element was not found";
+"MSG_ErrorVirtualFunctionCall"  = "Pure virtual function call";
+"MSG_ErrorUnexpected"           = "Unexpected exceptionType";
+"MSG_ErrorNetwork"              = "Network error";
+"MSG_ErrorBadResponse"          = "Bad response";
+
+
+"UMSG_EmergencyError"   = "Критическай ошибка";
+"UMSG_Warning"          = "Ошибка!!";
+"UMSG_NetworkError"     = "Нет доступа в Интернет";
+"UMSG_BadResponse"      = "Ошибка на вервере";
+
+//
+
+"BTN_CANCEL" = "Отмена";
+"BTN_OK" = "OK";
+
+
+"NOTES_TITLE" = "Notes";
+"GESTS_TITLE" = "Gests";
+"ALL_TITLE" = "Gests and Notes";
+"MAIN_TITLE"  = "Main";
+
+"NOTE_SAVED" = "Note was saved";
+
+
+
+
+
+
+
+
+
+
