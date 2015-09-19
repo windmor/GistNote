@@ -11,6 +11,11 @@
 @class Gist, Note;
 
 @interface CCGistDetail : HMKeyboardCtrl
+{
+    // update
+    NSNotification * _update_notification;
+    BOOL _needUpdate;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *lblOwnerName;

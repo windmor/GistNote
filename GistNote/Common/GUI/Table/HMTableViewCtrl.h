@@ -18,6 +18,10 @@
     HMServerAPI * _serverAPI;
     
     UITableViewCell * _cellPrototype;
+    
+    // update
+    NSNotification * _update_notification;
+    BOOL _needUpdate;
 }
 
 // fill with data

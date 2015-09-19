@@ -24,6 +24,17 @@
     } else if (_note) {
         [self fillViewWithNote:_note];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(update_list:)
+                                                 name:NOTIFICATION_NEED_TO_UP
+                                               object:nil];
+}
+
+- (void)update_list:(NSNotification*)notification
+{
+    _needUpdate = true;
+    _update_notification = notification;
 }
 
 - (void)fillViewWithGist:(Gist*)obj
@@ -77,9 +88,10 @@
                 withCallback:^(bool response)
                  {
                      dispatch_async(dispatch_get_main_queue(), ^{
-                        [HMMethods showAlertWithTitle:NSLocalizedString(@"APP_NAME", nil)
-                                               andMsg:NSLocalizedString(@"NOTE_SAVED", nil)
-                                              forCtrl:self];
+                         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_NEED_TO_UP object:nil];
+                         [HMMethods showAlertWithTitle:NSLocalizedString(@"APP_NAME", nil)
+                                                andMsg:NSLocalizedString(@"NOTE_SAVED", nil)
+                                               forCtrl:self];
                      });
                  } andCallbackError:^(NSError *error)
                  {
@@ -102,9 +114,10 @@
                 withCallback:^(bool response)
          {
              dispatch_async(dispatch_get_main_queue(), ^{
-                 [HMMethods showAlertWithTitle:NSLocalizedString(@"APP_NAME", nil)
-                                        andMsg:NSLocalizedString(@"NOTE_SAVED", nil)
-                                       forCtrl:self];
+                  [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_NEED_TO_UP object:nil];
+                    [HMMethods showAlertWithTitle:NSLocalizedString(@"APP_NAME", nil)
+                                           andMsg:NSLocalizedString(@"NOTE_SAVED", nil)
+                                          forCtrl:self];
              });
          } andCallbackError:^(NSError *error)
          {
@@ -127,6 +140,18 @@
         self.navigationItem.title = _gist.desc;
     } else if (_note) {
         self.navigationItem.title = _note.desc;
+    }
+    
+    if (_needUpdate) {
+        _needUpdate = false;
+        if ([_update_notification.name isEqualToString:NOTIFICATION_NEED_TO_UP] &&
+            _note) {
+            Note* upNote = [[HMStorageAPI getInstance] isNoteIsSaved:_note.initial_gist.gist_id];
+            if (upNote) {
+                _note = upNote;
+                [self fillViewWithNote:_note];
+            }
+        }
     }
 }
 

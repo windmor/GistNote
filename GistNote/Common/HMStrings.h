@@ -25,7 +25,7 @@ extern NSString * STORYBOARD_ID_GIST_DETAIL;
 //=========================
 // Notifications
 //=========================
-//extern NSString * NOTIFICATION_SHOW_LOCK_SCREEN;
+extern NSString * NOTIFICATION_NEED_TO_UP;
 
 //=====================
 // modules names

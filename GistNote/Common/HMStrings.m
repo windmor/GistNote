@@ -26,7 +26,7 @@ NSString * STORYBOARD_ID_GIST_DETAIL  = @"CCGistDetail";
 //=========================
 // Notifications
 //=========================
-//NSString * NOTIFICATION_SHOW_LOCK_SCREEN = @"show_lock_view";
+NSString * NOTIFICATION_NEED_TO_UP = @"need_to_update_ctrl";;
 
 
 //=====================

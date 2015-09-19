@@ -215,6 +215,14 @@
     
     self.navigationController.navigationBar.topItem.title = @"";
     [self setTitle];
+    
+    
+    if (_needUpdate) {
+        _needUpdate = false;
+        if ([_update_notification.name isEqualToString:NOTIFICATION_NEED_TO_UP]) {
+            [self loadData];
+        }
+    }
 }
 
 - (void)setTitle
@@ -314,6 +322,7 @@
     [self setCellId];
     [self loadData];
 }
+
 
 
 

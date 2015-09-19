@@ -19,7 +19,18 @@
                             action:@selector(refreshData)
                   forControlEvents:UIControlEventValueChanged];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(update_list:)
+                                                 name:NOTIFICATION_NEED_TO_UP
+                                               object:nil];
+    
     [self setCellId];
+}
+
+- (void)update_list:(NSNotification*)notification
+{
+    _needUpdate = true;
+    _update_notification = notification;
 }
 
 //=======================
